@@ -1,0 +1,1 @@
+A simple product database that integrates with jojo_cart.

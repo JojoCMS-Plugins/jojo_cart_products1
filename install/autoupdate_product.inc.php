@@ -19,6 +19,7 @@
 $table = 'product';
 $o = 1;
 
+
 $default_td[$table]['td_displayfield']     = 'name';
 $default_td[$table]['td_rolloverfield']    = '';
 $default_td[$table]['td_orderbyfields']    = 'name';
@@ -28,6 +29,16 @@ $default_td[$table]['td_menutype']         = 'list';
 $default_td[$table]['td_categoryfield']    = '';
 $default_td[$table]['td_categorytable']    = '';
 $default_td[$table]['td_help']             = '';
+
+
+/* status */
+$field = 'status';
+$default_fd[$table][$field]['fd_order']    = $o++;
+$default_fd[$table][$field]['fd_name']     = 'Page Status';
+$default_fd[$table][$field]['fd_type']     = 'radio';
+$default_fd[$table][$field]['fd_options']  = "active:Active\ninactive:Inactive";
+$default_fd[$table][$field]['fd_default']  = 'active';
+$default_fd[$table][$field]['fd_help']     = 'Inactive pages will not show on the shopping car lists';
 
 /* PRODUCT ID */
 $field = 'productid';
@@ -99,3 +110,4 @@ $default_fd[$table][$field]['fd_name']     = 'Freight costs';
 $default_fd[$table][$field]['fd_type']     = 'freight';
 $default_fd[$table][$field]['fd_default']  = '';
 $default_fd[$table][$field]['fd_help']     = 'Customize the freight charges that apply to this product';
+

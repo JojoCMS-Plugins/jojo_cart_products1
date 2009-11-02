@@ -12,6 +12,7 @@ $query = "
         `currency` varchar(255) NOT NULL default '',
         `freight` text NOT NULL,
         `quantity_fixed` ENUM('yes','no') NOT NULL default 'no',
+        `status` enum('active','inactive') NOT NULL default 'active',
          PRIMARY KEY  (`productid`)
          ) TYPE=MyISAM ;";
 

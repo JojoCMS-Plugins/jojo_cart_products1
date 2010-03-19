@@ -81,6 +81,17 @@ class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
 
             $smarty->assign('prodcode', $code);
 
+            /* attempt to match by product code */
+            $product = Jojo::selectRow("SELECT status FROM {product} WHERE code = ?", $code);
+
+            /* attempt to match by id instead */
+            if (empty($product['status']) && preg_match('/^[0-9]+$/m', $code)) {
+                $product = Jojo::selectRow("SELECT status FROM {product} WHERE productid = ?", $code);
+            }
+            if (empty($product['status']))          $smarty->assign('status', 'doesntexist');
+            elseif ($product['status']=='inactive')   $smarty->assign('status', 'inactive');
+            else $smarty->assign('status', 'active');
+
             /* Get the embed html */
             $html = $smarty->fetch('jojo_cart_products1_buynow.tpl');
             $content = str_replace($matches[0][$id], $html, $content);
@@ -90,6 +101,17 @@ class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
         preg_match_all('/\[\[buy ?now ?link: ?([^\]]*)\]\]/', $content, $matches);
         foreach($matches[1] as $id => $linkcode) {
             $smarty->assign('prodlinkcode', $linkcode);
+
+            /* attempt to match by product code */
+            $product = Jojo::selectRow("SELECT status FROM {product} WHERE code = ?", $linkcode);
+
+            /* attempt to match by id instead */
+            if (empty($product['status']) && preg_match('/^[0-9]+$/m', $linkcode)) {
+                $product = Jojo::selectRow("SELECT status FROM {product} WHERE productid = ?", $linkcode);
+            }
+            if (empty($product['status']))          $smarty->assign('status', 'doesntexist');
+            elseif ($product['status']=='inactive')   $smarty->assign('status', 'inactive');
+            else $smarty->assign('status', 'active');
 
             /* Get the embed html */
             $html = $smarty->fetch('jojo_cart_products1_buynowlink.tpl');

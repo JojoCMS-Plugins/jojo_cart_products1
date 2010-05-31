@@ -89,8 +89,7 @@ class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
                 $product = Jojo::selectRow("SELECT status FROM {product} WHERE productid = ?", $code);
             }
             if (empty($product['status']))          $smarty->assign('status', 'doesntexist');
-            elseif ($product['status']=='inactive')   $smarty->assign('status', 'inactive');
-            else $smarty->assign('status', 'active');
+            else   $smarty->assign('status', $product['status']);
 
             /* Get the embed html */
             $html = $smarty->fetch('jojo_cart_products1_buynow.tpl');
@@ -109,9 +108,9 @@ class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
             if (empty($product['status']) && preg_match('/^[0-9]+$/m', $linkcode)) {
                 $product = Jojo::selectRow("SELECT status FROM {product} WHERE productid = ?", $linkcode);
             }
+
             if (empty($product['status']))          $smarty->assign('status', 'doesntexist');
-            elseif ($product['status']=='inactive')   $smarty->assign('status', 'inactive');
-            else $smarty->assign('status', 'active');
+            else   $smarty->assign('status', $product['status']);
 
             /* Get the embed html */
             $html = $smarty->fetch('jojo_cart_products1_buynowlink.tpl');

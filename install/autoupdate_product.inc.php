@@ -36,7 +36,7 @@ $field = 'status';
 $default_fd[$table][$field]['fd_order']    = $o++;
 $default_fd[$table][$field]['fd_name']     = 'Page Status';
 $default_fd[$table][$field]['fd_type']     = 'radio';
-$default_fd[$table][$field]['fd_options']  = "active:Active\ninactive:Inactive";
+$default_fd[$table][$field]['fd_options']  = "active:Active\noutofstock:Out of Stock\ninactive:Inactive";
 $default_fd[$table][$field]['fd_default']  = 'active';
 $default_fd[$table][$field]['fd_help']     = 'Inactive pages will not show on the shopping car lists';
 

@@ -16,7 +16,7 @@
 
 class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
 {
-    function getProductDetails($code)
+    public static function getProductDetails($code)
     {
         /* use a cache to store product details */
         static $_cache;
@@ -71,7 +71,7 @@ class JOJO_Plugin_jojo_cart_products1 extends JOJO_Plugin
     }
 
     /* a content filter for inserting buy now buttons */
-    function buyNow($content)
+    public static function buyNow($content)
     {
         global $smarty;
 
